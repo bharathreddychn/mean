@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <link data-require="bootstrap@4.0.5" data-semver="4.0.5" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" />
+    <script data-require="bootstrap@4.0.5" data-semver="4.0.5" src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js"></script>
+    <script data-require="angularjs@1.6.2" data-semver="1.6.2" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular.js"></script>
+   <!-- <link rel="stylesheet" href="style.css" />-->
+    <script src="ajaxscript1.js"></script>
+  </head>
+
+  <body class="container" ng-app="myApp" ng-controller="studentController" ng-cloak>
+    
+    <h1>photo</h1>
+    <!--Form-->
+    <form ng-submit="createUser()">
+      <div class="form-group" ng-show="userid">
+        <label class="control-label col-md-2">albumiD</label>
+        <div class="col-md-4">
+            <input type="number" class="form-control" ng-model="user.albumid" placeholder="albumid" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-md-2">title</label>
+        <div class="col-md-4">
+            <input type="text" class="form-control" ng-model="user.title" placeholder="title" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-md-2">Url</label>
+        <div class="col-md-4">
+            <input type="text" class="form-control" ng-model="user.url" placeholder="url" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-md-2">thumnail</label>
+        <div class="col-md-4">
+            <input type="text" class="form-control" ng-model="user.thumnail" placeholder="thumnail" />
+        </div>
+      </div>
+      
+      <div class="col-md-offset-2 col-md-10">
+      <input type="submit" value="submit" class="btn btn-success btn-sm" ng-show="submit" />    
+      <input type="button" value="update" ng-click="updateUser()" class="btn btn-success btn-sm" ng-show="update" />    
+      <input type="button" value="cancel" ng-click="cancelUpdate()" class="btn btn-danger btn-sm" ng-show="cancel" />    
+      </div>
+    </form>
+    <!--End Form-->
+    
+    <!--Users List-->
+    <br />
+    <h4>Users List</h4>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <td>albumid</td>
+          <td>id</td>
+          <td>title</td>
+          <td>url</td>
+          <td>thumbnail</td>
+          <td>Actioncommand</td>
+
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="user in users">
+          <td>
+            {{user.albumid}}
+          </td>
+          <td>
+                {{user.id}}
+              </td>
+
+          <td>
+            {{user.title}}
+          </td>
+            <td>
+            {{user.url}}>
+             </td>
+            <td>
+         {{user.thumbnail}}
+         </td>
+         <td>
+            <button class="btn btn-success btn-sm" ng-click="editUser(user)">edit</button>
+            <button class="btn btn-danger btn-sm" ng-click="deleteUser(user)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+ 
+    </table>
+    
+  </body>
+
+</html>
