@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <title>Document</title>
+</head>
+<body ng-app="" ng-init="employees=[
+{name:'bhararth',profession:'it',country:'india'},
+{name:'yuvraj',profession:'cricket',country:'india'},
+{name:'pawan kalayan',profession:'actor',country:'india'}
+]">
+<ul>
+    <h1>table</h1>
+    <table>
+        <tr>
+        <th>Employee name </th>
+        <th>Employee profession </th>
+        <th>Employee country </th>
+    </tr>
+    <tr ng-repeat="emp in employees">
+        <td>{{emp.name}}</td>
+        <td>{{emp.profession}}</td>
+        <td>{{emp.country}}</td>
+
+
+    </tr>
+    </table>
+    <li ng-repeat="emp in the employees">{{emp.name}}-{{emp.profession}}-{{emp.country}}</li>
+
+</ul>
+
+    
+</body>
+</html>

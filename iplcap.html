@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>IPL</title>
+</head>
+<body>
+ <h1>IPL</h1>
+ <input type="text" name="name" id="name" placeholder="Name"><br>
+ <input type="text" name="team" id="team" placeholder="Team"><br>
+ <input type="text" name="season" id="season" placeholder="Season"><br>
+ <input type="text" name="runs" id="runs" placeholder="Runs"><br>
+ <input type="text" name="wickets" id="wickets" placeholder="Wickets"><br>
+ <button onclick="saveEmployee()">Submit</button>
+ <button onclick="leaderEmployee()">Leader</button>
+ <table id="result">
+ </table>
+ <script>
+        emplist=[];
+        function employee(empname,team,season,runs,wickets){
+        this.empname = empname;
+        this.team = team;
+        this.season=season;
+        this.runs=runs;
+        this.wickets =wickets;
+ this.getDesignation=function(){
+ return this.season;
+ };
+ this.getSalary=function(){
+ return this.wickets;
+ }
+ }
+ function displayEmployee(){
+ var data = ''; 
+ for (var i=0;i<emplist.length;i++){
+ data = data + '<tr>';
+ data=data+'<td>'+emplist[i].empname+'</td>'+'<td>'+emplist[i].team+'</td>'+'<td>'+emplist[i].season+'</td>'; 
+ data = data+'</tr>';
+ }
+ document.getElementById('result').innerHTML=data;
+ }
+ function leaderEmployee(){
+ name = document.getElementById("name").value;
+ team = document.getElementById("team").value;
+ season = document.getElementById("season").value;
+ runs= document.getElementById("runs").value;
+ wickets = document.getElementById("wickets").value;
+ emp = new employee(name,team,season,runs,wickets);
+ emplist.push(emp);
+ console.log('emplist ',emplist);
+ displayEmployee();
+ }
+ function displayEmployee(){
+ var data = ''; 
+ for (var i=0;i<emplist.length;i++){
+ data = data + '<tr>';
+ data=data+'<td>'+emplist[i].empname+'</td>'+'<td>'+emplist[i].team+'<td>'+emplist[i].season+'</td>'+'<td>'+emplist[i].runs+'<td>'+emplist[i].wickets; 
+ data = data+'</tr>';
+ }
+ document.getElementById('result').innerHTML=data;
+ }
+ function saveEmployee(){
+ name = document.getElementById("name").value;
+ team = document.getElementById("team").value;
+ season = document.getElementById("season").value;
+ runs= document.getElementById("runs").value;
+ wickets = document.getElementById("wickets").value;
+ emp = new employee(name,team,season,runs,wickets);
+ emplist.push(emp);
+ console.log('emplist ',emplist);
+ displayEmployee();
+ }
+ 
+ </script>
+</body>
+</html>

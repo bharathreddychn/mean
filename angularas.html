@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <title>Ecommerce</title>
+</head>
+<body ng-app="eComapp" ng-controller="ecomController">
+    <h1 text-align="center">Ecommerce</h1>
+        <input type="text" name="num2" id="num2" ng-model="num2" placeholder="Enter Mobile Number"><br>
+        <input type="number" name="num1" id="num1" ng-model="num1" placeholder="Enter purchase Amount"><br>
+        <input type="text" name="num3" id="num3" ng-model="num3" placeholder="Enter yes or no"><br>  
+       <button ng-click="bill()">BillGenerate</button><br>
+       <h3>actual amount:{{num1}}</h3><br>
+       <h3>discount:{{discount1}}</h3><br>
+       <h3>after the discount:{{discount4}}</h3><br>  
+        <script>
+               var app=angular.module("eComapp",[]);
+               app.controller("ecomController",function($scope){
+             $scope.num1=0;
+             $scope.discount1=0;
+             $scope.discount2=0;
+             $scope.discount3=0;
+            $scope.discount4=0;
+            $scope.bill=function(){
+            output=0;
+                if($scope.num1<=10000){
+                     output=($scope.num1*10)/100;
+                     $scope.discount1=output;                 
+                    $scope.discount2=$scope.num1 - $scope.discount1;     
+                     if($scope.num3=='yes'){
+                         $scope.discount3=($scope.num1*15)/100;           
+                        $scope.discount1 = $scope.discount3;                
+                          }
+                        $scope.discount4 = $scope.num1 - $scope.discount1;             
+                          }
+
+
+                         else if($scope.num1>=10000 && $scope.num1<=20000){
+                         output=($scope.num1*20)/100
+                         $scope.discount1=output;
+                         $scope.discount2=$scope.num1-$scope.discount1;
+                        if($scope.num3=='yes'){
+                        $scope.discount3=($scope.num1*25)/100;          
+                        $scope.discount1 = $scope.discount3;                
+                        }
+                        $scope.discount4 = $scope.num1 - $scope.discount1;                              
+                         } 
+
+
+                          else if($scope.num1>20000 && $scope.num1>=30000){
+                               output=($scope.num1*30)/100
+                                $scope.discount1=output;
+                                $scope.discount2=$scope.num1-$scope.discount1;
+                                if($scope.num3=='yes'){
+                                 $scope.discount3=($scope.num1*35)/100;          
+                                $scope.discount1 = $scope.discount3;                
+                                 }
+                                $scope.discount4 = $scope.num1 - $scope.discount1;                               
+                          } 
+                         return $scope.discount1; 
+                         
+                                                            
+                   };
+               });
+</script>
+</body>
+</html>
